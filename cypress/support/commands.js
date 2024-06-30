@@ -23,3 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('createUser', (username, password) => {
+    cy.request({
+        method: 'POST',
+        url: 'https://demoqa.com/Account/v1/User',
+        headers: {
+            contentType: 'application/json'
+        },
+        body: {
+            userName: username,
+            password: password
+        }
+    }).then((resp) => {
+        const userInfo = resp.body;
+        cy.log("username: ", userInfo.username)
+    })
+})
