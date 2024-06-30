@@ -30,4 +30,10 @@ Install Cypress via npm:
 
 ## Test Report
 
+## Generate user data
+```
+cd /cypress/fixtures
+> python3 generateUser.py 
+```
+
 
