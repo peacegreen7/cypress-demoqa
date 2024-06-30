@@ -40,3 +40,35 @@ Cypress.Commands.add('createUser', (username, password) => {
         cy.log("username: ", userInfo.username)
     })
 })
+
+Cypress.Commands.add('generateToken', (username, password) => {
+    cy.request({
+        method: 'POST',
+        url: 'https://demoqa.com/Account/v1/GenerateToken',
+        headers: {
+            contentType: 'application/json'
+        },
+        body: {
+            userName: username,
+            password: password
+        }
+    }).then(resp => {
+        cy.log('token: ' + resp.body.token)
+    })
+})
+
+Cypress.Commands.add('loginViaAPI', (username, password) => {
+    cy.request({
+        method: 'POST',
+        url: 'https://demoqa.com/Account/v1/Login',
+        headers: {
+            contentType: 'application/json'
+        },
+        body: {
+            userName: username,
+            password: password
+        }
+    }).then(resp => {
+        cy.log('token: ' + resp.body.token)
+    })
+})
