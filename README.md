@@ -54,19 +54,13 @@ Step 5: Add below code snippet in ```"package.json"```
 
 ```js
 "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": false
+    "nonGlobalStepDefinitions": false,
+    "step_definitions": "cypress/e2e/cucumber/Tests"
  }
 ```
 
 
-Step 6: Add below code snippet in ```"package.json"```
-
-```js
-"step_definitions": "cypress/e2e/cucumber/Tests"
-```
-
-
-Step 7: Add the below line in ```"cypress.config.js"``` to run ```"*.feature"``` file
+Step 6: Add the below line in ```"cypress.config.js"``` to run ```"*.feature"``` file
 
 ```js
 specPattern: "**/*.feature",
