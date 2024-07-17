@@ -17,6 +17,11 @@
   "homepage": "https://github.com/peacegreen7/cypress-demoqa#readme",
   "description": "",
   "devDependencies": {
-    "cypress": "^13.12.0"
+    "cypress": "^13.12.0",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/e2e/cucumber/Tests"
   }
 }
