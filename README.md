@@ -18,22 +18,75 @@
 > This project requires Node.js to be installed on your machine.
 
 ## Installation
-Install Cypress via npm:
-> cd /your/project/path
-> ``` npm install cypress --save-dev ```
+
+### 1. Setup Project
+Step 1: Create a folder and Generate ```package.json```
+
+Step 2: Install Cypress via npm:
+```sh
+$ cd /your/project/path
+
+$ npm install cypress --save-dev 
+ ```
+
+Step 3: Install Cucumber
+
+```sh
+$ npm install --save-dev cypress-cucumber-preprocessor
+```
+
+Step 4: Add below code snippet in ```"cypress.config.js"```
+
+```ts
+const { defineConfig } = require("cypress");
+const cucumber = require("cypress-cucumber-preprocessor").default;
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      on("file:preprocessor", cucumber());
+    },
+  },
+});
+```
+
+
+Step 5: Add below code snippet in ```"package.json"```
+
+```js
+"cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false
+ }
+```
+
+
+Step 6: Add below code snippet in ```"package.json"```
+
+```js
+"step_definitions": "cypress/e2e/cucumber/Tests"
+```
+
+
+Step 7: Add the below line in ```"cypress.config.js"``` to run ```"*.feature"``` file
+
+```js
+specPattern: "**/*.feature",
+```
 
 ## Run the app
-
-> ```npm run test```
+Open the Cypress test runner with the following command
+```sh
+$ npm run test
+```
 
 ## Test Scenario
 
 ## Test Report
 
 ## Generate user data
-```
-cd /cypress/fixtures
-> python3 generateUser.py 
+```sh
+$ cd /cypress/fixtures
+
+$ python3 generateUser.py 
 ```
 
 
